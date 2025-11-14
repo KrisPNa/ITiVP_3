@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Перенаправляем все запросы на index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Устанавливаем заголовки для CORS (если нужно тестировать с других доменов)
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+Header always set Access-Control-Allow-Headers "X-API-Key, Content-Type"
